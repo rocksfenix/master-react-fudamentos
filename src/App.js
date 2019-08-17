@@ -1,26 +1,41 @@
 import React, { Component } from 'react'
 
-class App extends Component {
-
-  manejador = (e) => {
-    e.preventDefault()
-
-    console.log(e.nativeEvent)
+class PersistenciaEventos extends Component {
+  state = {
+    color: 'blue'
+  }
+  
+  handlerChange = (event) => {
+    const color = event.target.value
+    
+    this.setState(state => ({
+      color: color
+    }))
   }
 
   render () {
     return (
       <div>
-        <a
-          href="https://google.com"
-          onClick={this.manejador}
-          // onclick="return false"
+        <input
+          type="text"
+          onChange={this.handlerChange}  
+        />
+        <h1
+          style={{
+            color: this.state.color
+          }}
         >
-          GOOGLE
-        </a>
+          { this.state.color }
+        </h1>
       </div>
     )
   }
 }
+
+const App = () => (
+  <div>
+    <PersistenciaEventos />
+  </div>
+)
 
 export default App
