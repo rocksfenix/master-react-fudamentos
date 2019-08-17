@@ -1,45 +1,37 @@
 import React, { Component } from 'react'
 
-const Saludo = (props) => {
-  return (
-    <div>
-      <div>
-        { props.name && <strong>{ props.name }</strong>}
-      </div>
-
-      { props.saluda
-        ? (
-          <h1>Hola, tu eres genial 🔮!</h1>
-        )
-        : (
-          <p>
-            Woops, no hay saludo para ti!
-          </p>
-        )
-      }
-    </div>
-  )
-
-  if (props.saluda) {
-    return (
-      <h1>Hola, tu eres genial 🔮!</h1>
-    )
-  }
-
-  return (
-    <p>
-      Woops, no hay saludo para ti!
-    </p>
-  )
-}
-
-const App = () => (
+const Gato = (props) => (
   <div>
-    <Saludo
-      saluda
-      name='Ninja PRO'
-    />
+    <h1>Gato 🐈</h1>
+    <pre>
+      { JSON.stringify(props, null, 4 ) }
+    </pre>
   </div>
 )
+
+class App extends Component {
+  state = {
+    fuerza: 100,
+    vidasRestantes: 7,
+    name: 'Chimicuil'
+  }
+
+  render () {
+    const otrosDatos = {
+      raza: 'tropical',
+      peleasNocturnas: 300
+    }
+    return (
+      <div>
+        <Gato
+          name='Garfield'
+          age='2 años'
+          { ...otrosDatos }
+          { ...this.state }
+        />
+      </div>
+    )
+  }
+}
 
 export default App
