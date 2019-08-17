@@ -1,47 +1,42 @@
 import React, { Component } from 'react'
-import './global.css'
 
-class Hijo extends Component {
-
-  manejadorClick = () => {
-    this.props.onSaluda('Ninja en React 🔥')
+class Contador extends Component {
+  state = {
+    video: {
+      title: 'Super Video',
+      likes: 0
+    }
+  }
+  add = () => {
+    this.setState(state => ({
+      ...state,
+      video: {
+        ...state.video,
+        likes: state.video.likes + 1
+      }
+    }))
   }
 
   render () {
     return (
-      <div className='box blue'>
-        <h2>Hijo</h2>
+      <div>
+        <h1>
+          { this.state.video.title }
+        </h1>
         <button
-          onClick={this.manejadorClick}
+          onClick={this.add}
         >
-          Saluda
+          Likes: ({ this.state.video.likes })
         </button>
       </div>
     )
   }
 }
 
-class App extends Component {
-  state = {
-    name: ''
-  }
-
-  manejador = (name) => {
-    this.setState({ name })
-  }
-
-  render () {
-    return (
-      <div className='box red'>
-        <Hijo
-          onSaluda={this.manejador}
-        />
-        <h1>
-          Nombre: { this.state.name }
-        </h1>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <div>
+    <Contador />
+  </div>
+)
 
 export default App
