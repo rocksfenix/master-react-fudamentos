@@ -1,41 +1,44 @@
 import React, { Component } from 'react'
 
-class Contador extends Component {
-  state = {
-    video: {
-      title: 'Super Video',
-      likes: 0
-    }
-  }
-  add = () => {
-    this.setState(state => ({
-      ...state,
-      video: {
-        ...state.video,
-        likes: state.video.likes + 1
-      }
-    }))
-  }
-
-  render () {
-    return (
+const Saludo = (props) => {
+  return (
+    <div>
       <div>
-        <h1>
-          { this.state.video.title }
-        </h1>
-        <button
-          onClick={this.add}
-        >
-          Likes: ({ this.state.video.likes })
-        </button>
+        { props.name && <strong>{ props.name }</strong>}
       </div>
+
+      { props.saluda
+        ? (
+          <h1>Hola, tu eres genial 🔮!</h1>
+        )
+        : (
+          <p>
+            Woops, no hay saludo para ti!
+          </p>
+        )
+      }
+    </div>
+  )
+
+  if (props.saluda) {
+    return (
+      <h1>Hola, tu eres genial 🔮!</h1>
     )
   }
+
+  return (
+    <p>
+      Woops, no hay saludo para ti!
+    </p>
+  )
 }
 
 const App = () => (
   <div>
-    <Contador />
+    <Saludo
+      saluda
+      name='Ninja PRO'
+    />
   </div>
 )
 
