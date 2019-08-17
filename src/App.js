@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-const Title = (props) => {
+const Title = ({ uiColor, children }) => {
   const styles = {
-    background: props.uiColor,
+    background: uiColor,
     padding: '0.3em',
     color: '#FFF',
     borderRadius: '0.3em',
@@ -12,7 +12,7 @@ const Title = (props) => {
 
   return (
     <h1 style={styles}>
-      { props.children }
+      { children }
     </h1>
   )
 }
@@ -20,14 +20,15 @@ const Title = (props) => {
 
 class App extends Component {
   state = {
-    uiColor: 'purple'
+    uiColor: 'tomato'
   }
 
   render () {
+    const { uiColor } = this.state
     return (
       <div>
         <Title
-          uiColor={this.state.uiColor}
+          uiColor={uiColor}
         >
           Super <em>Ninja</em>
         </Title>
