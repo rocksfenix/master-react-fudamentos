@@ -1,0 +1,13 @@
+.box {
+  padding: 1em;
+  box-sizing: border-box;
+  border-radius: 0.2em;
+}
+
+.red {
+  border: 1px solid red;
+}
+
+.blue {
+  border: 1px solid blue;
+}
